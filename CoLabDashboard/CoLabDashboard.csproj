@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\lib\powerbi-client\**" />
+    <Content Remove="wwwroot\lib\powerbi-client\**" />
+    <EmbeddedResource Remove="wwwroot\lib\powerbi-client\**" />
+    <None Remove="wwwroot\lib\powerbi-client\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\images\NotVivid.png" />
     <Content Include="wwwroot\index.html" />
   </ItemGroup>
