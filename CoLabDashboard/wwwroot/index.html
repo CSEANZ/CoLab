@@ -20,6 +20,10 @@
              margin: 0;
              border:none;
         }
+        body{
+            background-color: #EAEAEA;
+        }
+        
     </style>
     <script>
 //Adapted from excellant eample on this blog post https://www.hougaard.com/power-bi-embedded-a-minimal-example/
@@ -31,7 +35,7 @@
             Embed.prototype = {
                 init: function () {
                     var embedUrl = this.getEmbedUrl() + '&filterPaneEnabled=false&navContentPaneEnabled=false';
-                    var iframeHtml = '<iframe style="width:100%;height:100%;" src="' + embedUrl + '" scrolling="no" allowfullscreen="true"></iframe>';
+                    var iframeHtml = '<iframe style="width:100%;height:100%;" src="' + embedUrl + '" scrolling="no" allowfullscreen="true" ></iframe>';
                     this.element.innerHTML = iframeHtml;
                     this.iframe = this.element.childNodes[0];
                     this.iframe.addEventListener('load', this.load.bind(this), false);
@@ -259,6 +263,10 @@
                 }
             }
         }(window.powerbi = window.powerbi || {}));
+
+
+
+
     </script>
      <link href="http://amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
     <script src="http://amp.azure.net/libs/amp/latest/azuremediaplayer.min.js"></script> 
@@ -272,20 +280,20 @@
         <p class="amp-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video</p>
     </video> </div>
       <div id="Report"
-         powerbi-access-token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsInR5cGUiOiJlbWJlZCIsIndjbiI6IkNvbGFiUEJJIiwid2lkIjoiQjk2MUNFNTAtN0VERi00ODEzLTg5M0UtOTExMjM5OThDQTYyIiwicmlkIjoiZGQ3ZmUwYjgtYjlhOC00YWRmLThkNWItODQ4ZTAxZjk2YTY5Iiwic2NwIjoiUmVwb3J0LlJlYWQiLCJpc3MiOiJQb3dlckJJU0RLIiwiYXVkIjoiaHR0cHM6Ly9hbmFseXNpcy53aW5kb3dzLm5ldC9wb3dlcmJpL2FwaSIsImV4cCI6MTQ4OTE5MTkwMCwibmJmIjoxNDg5MDE5MTAwfQ.7Xv0JIdYZQ9aAR5LsUH_EMWVPJp4jUUrcGeepz00TEQ"
-         powerbi-embed="https://embedded.powerbi.com/appTokenReportEmbed?reportId=dd7fe0b8-b9a8-4adf-8d5b-848e01f96a69&width=200px"
-         powerbi-report="dd7fe0b8-b9a8-4adf-8d5b-848e01f96a69" style="width:45%;height:420px;float:right">
-        <iframe src="https://embedded.powerbi.com/appTokenReportEmbed?reportId=dd7fe0b8-b9a8-4adf-8d5b-848e01f96a69&width=200px" 
+         powerbi-access-token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsInR5cGUiOiJlbWJlZCIsIndjbiI6IkNvbGFiUEJJIiwid2lkIjoiQjk2MUNFNTAtN0VERi00ODEzLTg5M0UtOTExMjM5OThDQTYyIiwicmlkIjoiNjlmMjc5M2YtNzMyMC00YjgxLTlmZDItZjM2N2M4OThmOWM2Iiwic2NwIjoiUmVwb3J0LlJlYWQiLCJpc3MiOiJQb3dlckJJU0RLIiwiYXVkIjoiaHR0cHM6Ly9hbmFseXNpcy53aW5kb3dzLm5ldC9wb3dlcmJpL2FwaSIsImV4cCI6MTQ4OTIwMDA3OCwibmJmIjoxNDg5MDI3Mjc4fQ.GrJrTC2LtzUZoBFmo6HTQ-YOj707aNi8yhzourO2LH4"
+         powerbi-embed="https://embedded.powerbi.com/appTokenReportEmbed?reportId=69f2793f-7320-4b81-9fd2-f367c898f9c6&width=300px"
+         powerbi-report="69f2793f-7320-4b81-9fd2-f367c898f9c6" style="width:45%;height:420px;float:right">
+        <iframe src="https://embedded.powerbi.com/appTokenReportEmbed?reportId=69f2793f-7320-4b81-9fd2-f367c898f9c6&width=300px" 
         scrolling="yes" allowfullscreen="false"></iframe>
     </div>
     </div>
     <div id="Report"
-         powerbi-access-token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsInR5cGUiOiJlbWJlZCIsIndjbiI6IkNvbGFiUEJJIiwid2lkIjoiQjk2MUNFNTAtN0VERi00ODEzLTg5M0UtOTExMjM5OThDQTYyIiwicmlkIjoiYTczZDZkZTMtMzg0Ny00NGQ1LThmYmEtMzkyNTA5MmU0OGM5Iiwic2NwIjoiUmVwb3J0LlJlYWQiLCJpc3MiOiJQb3dlckJJU0RLIiwiYXVkIjoiaHR0cHM6Ly9hbmFseXNpcy53aW5kb3dzLm5ldC9wb3dlcmJpL2FwaSIsImV4cCI6MTQ4OTE4OTI3MSwibmJmIjoxNDg5MDE2NDcxfQ.TTrl3x1WvRMfVwBRJ_uqnJW1xq6nz8KF1YoimN2CyhE"
-         powerbi-embed="https://embedded.powerbi.com/appTokenReportEmbed?reportId=a73d6de3-3847-44d5-8fba-3925092e48c9"
-         powerbi-report="a73d6de3-3847-44d5-8fba-3925092e48c9"
+         powerbi-access-token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsInR5cGUiOiJlbWJlZCIsIndjbiI6IkNvbGFiUEJJIiwid2lkIjoiQjk2MUNFNTAtN0VERi00ODEzLTg5M0UtOTExMjM5OThDQTYyIiwicmlkIjoiZDg4ZGFlYjgtYmZmYi00OGJkLTg4MjUtMDFlODNlZDVmMGQxIiwic2NwIjoiUmVwb3J0LlJlYWQiLCJpc3MiOiJQb3dlckJJU0RLIiwiYXVkIjoiaHR0cHM6Ly9hbmFseXNpcy53aW5kb3dzLm5ldC9wb3dlcmJpL2FwaSIsImV4cCI6MTQ4OTIwMDg4NSwibmJmIjoxNDg5MDI4MDg1fQ.34XKqDG_tUN9FyXKJGDk8LOytkC6JIMnm0N_K5ytoJA"
+         powerbi-embed="https://embedded.powerbi.com/appTokenReportEmbed?reportId=d88daeb8-bffb-48bd-8825-01e83ed5f0d1"
+         powerbi-report="d88daeb8-bffb-48bd-8825-01e83ed5f0d1"
          style="height:75vh;width:100%;">
-        <iframe style="width:100%;height:100%;" src="https://embedded.powerbi.com/appTokenReportEmbed?reportId=a73d6de3-3847-44d5-8fba-3925092e48c9" scrolling="no" allowfullscreen="true"></iframe>
+        <iframe id='frame2' style="width:100%;height:100%;" src="https://embedded.powerbi.com/appTokenReportEmbed?reportId=d88daeb8-bffb-48bd-8825-01e83ed5f0d1" scrolling="no" allowfullscreen="true"></iframe>
     </div>
-   
+
 </body>
 </html>

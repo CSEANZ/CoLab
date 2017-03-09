@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #FFFFFF;
 }
 
 /* Wrapping element */
@@ -34,4 +35,13 @@ textarea {
     .carousel-caption {
         display: none;
     }
+}
+    
+    .explorationContainer .exploreCanvas {
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    -ms-overflow-style: scrollbar;
+    }
+
 }
