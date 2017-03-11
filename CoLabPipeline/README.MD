@@ -1,7 +1,7 @@
 # CoLab Processing Pipeline
 The files included here represent the Logic Apps used to process the incoming data from both Streaming Analytics and any telemetry posted from the different teams.
 
-The output of each Logic App is the insertion of a record into a accompanying table for each activity type. This is data is then visualised using Power BI embedded on the main dashboard.
+The output of each Logic App is the insertion of a record into a accompanying table for each activity type. This data is then visualised using Power BI embedded on the main dashboard.
 
 Both the Logic App code and the output table's schema is provided below for each activity type.
 
