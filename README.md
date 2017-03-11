@@ -9,4 +9,6 @@ Dashboard all of the things...
 6. Custom Function Apps needed to be written to address some of the weird data inserted by Stream Analytics when posting to the Service Bus queues.
 7. The resulting tables were visualed in Power BI Embedded as shown below:
 
+For information on the processing of the data being displayed on the database, refer to the [CoLabPipeline](CoLabPipeline). 
+
 ![Dashboard](dashboard.png)
