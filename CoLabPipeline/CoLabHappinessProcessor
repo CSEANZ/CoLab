@@ -1,0 +1,72 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "actions": {
+    "CleanGarbage": {
+      "type": "Function",
+      "inputs": {
+        "body": {
+          "ContentBag": "@{base64ToString(triggerBody()?['ContentData'])}"
+        },
+        "function": {
+          "id": "/subscriptions/db07ef66-ec14-481b-9f46-a8f02053c0e0/resourceGroups/CoLabResourceGroup/providers/Microsoft.Web/sites/CleanStreamAnalyticsOutput/functions/CleanGarbage"
+        }
+      },
+      "runAfter": {}
+    },
+    "Insert_row": {
+      "type": "ApiConnection",
+      "inputs": {
+        "host": {
+          "api": {
+            "runtimeUrl": "https://logic-apis-australiaeast.azure-apim.net/apim/sql"
+          },
+          "connection": {
+            "name": "@parameters('$connections')['sql']['connectionId']"
+          }
+        },
+        "method": "post",
+        "path": "/datasets/default/tables/@{encodeURIComponent(encodeURIComponent('[dbo].[Happiness]'))}/items",
+        "body": {
+          "HappinessScore": "@{body('CleanGarbage').avg}"
+        }
+      },
+      "runAfter": {
+        "CleanGarbage": [
+          "Succeeded"
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    }
+  },
+  "triggers": {
+    "When_a_message_is_received_in_a_queue_(auto-complete)": {
+      "type": "ApiConnection",
+      "inputs": {
+        "host": {
+          "api": {
+            "runtimeUrl": "https://logic-apis-australiaeast.azure-apim.net/apim/servicebus"
+          },
+          "connection": {
+            "name": "@parameters('$connections')['servicebus']['connectionId']"
+          }
+        },
+        "method": "get",
+        "path": "/@{encodeURIComponent('processedhappinessqueue')}/messages/head",
+        "queries": {
+          "queueType": "Main"
+        }
+      },
+      "recurrence": {
+        "frequency": "Minute",
+        "interval": 1
+      }
+    }
+  },
+  "contentVersion": "1.0.0.0",
+  "outputs": {}
+}

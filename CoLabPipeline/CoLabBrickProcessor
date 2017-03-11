@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "actions": {
+    "Insert_row": {
+      "type": "ApiConnection",
+      "inputs": {
+        "host": {
+          "api": {
+            "runtimeUrl": "https://logic-apis-australiaeast.azure-apim.net/apim/sql"
+          },
+          "connection": {
+            "name": "@parameters('$connections')['sql']['connectionId']"
+          }
+        },
+        "method": "post",
+        "path": "/datasets/default/tables/@{encodeURIComponent(encodeURIComponent('[dbo].[BrickCount]'))}/items",
+        "body": {
+          "Count": "@{triggerBody()?['Properties']['BrickCount']}"
+        }
+      },
+      "runAfter": {}
+    }
+  },
+  "parameters": {
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    }
+  },
+  "triggers": {
+    "When_a_message_is_received_in_a_queue_(auto-complete)": {
+      "type": "ApiConnection",
+      "inputs": {
+        "host": {
+          "api": {
+            "runtimeUrl": "https://logic-apis-australiaeast.azure-apim.net/apim/servicebus"
+          },
+          "connection": {
+            "name": "@parameters('$connections')['servicebus']['connectionId']"
+          }
+        },
+        "method": "get",
+        "path": "/@{encodeURIComponent('brickqueue')}/messages/head",
+        "queries": {
+          "queueType": "Main"
+        }
+      },
+      "recurrence": {
+        "frequency": "Minute",
+        "interval": 1
+      }
+    }
+  },
+  "contentVersion": "1.0.0.0",
+  "outputs": {}
+}
