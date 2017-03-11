@@ -1,5 +1,7 @@
 The files included here represent the Logic Apps used to process the incoming data from both Streaming Analytics and any telemetry posted from the different teams.
 
+The output of each Logic App is an insertion of a record into a accompanying table for each activity type. This is data is then visualised using Power BI embedded on the main dashboard.
+
 # BrickCount Table
 
 [CoLabBrickProcessor](CoLabBrickProcessor) - Retrieves information posted about Lego bricks used for song composition.
@@ -41,5 +43,7 @@ The files included here represent the Logic Apps used to process the incoming da
 |Id   |int   |A sequential identity.|
 |HappinessScore   |float   |The value between 0 and 1 returned by the Cognitive API to represent the average happiness of the people in the video being analysed.|
 |TimeSubmitted   |datetime2   |The time the value was retrieved from the Service Bus queue and inserted into the database.|
+
+All of the above Logic Apps are triggered by a Service Bus queue and output the resulting data to an Azure SQL database for reporting.
 
 
