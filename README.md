@@ -1,4 +1,4 @@
-# CoLab
+# CoLab Dashboard
 Dashboard all of the things...
 
 1. Captured video stream using Azure Media Services.
